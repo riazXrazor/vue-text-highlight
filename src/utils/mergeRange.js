@@ -15,13 +15,13 @@ export default function mergeRange([...ranges]) {
 
   ranges.forEach(([start, end]) => {
     if (start >= curEnd) {
-      merged.push([curStart, curEnd]);
+      merged.push([curStart, curEnd, ranges[2]]);
       curStart = start;
       curEnd = end;
     } else if (end > curEnd) curEnd = end;
   });
 
-  merged.push([curStart, curEnd]);
+  merged.push([curStart, curEnd, ranges[2]]);
 
   return merged;
 }

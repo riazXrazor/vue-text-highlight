@@ -14,8 +14,8 @@ export default function highlightChunks(text, queriesOrQuery, caseSensitive = fa
 
   const matches = [];
 
-  queries.forEach((query) => {
-    matches.push(...indicesOf(text, query, caseSensitive));
+  queries.forEach((query, qindex) => {
+    matches.push(...indicesOf(text, query, caseSensitive, qindex));
   });
 
   const highlights = mergeRange(matches);
@@ -23,7 +23,7 @@ export default function highlightChunks(text, queriesOrQuery, caseSensitive = fa
   const chunks = [];
   let lastEnd = 0;
 
-  highlights.forEach(([start, end], index) => {
+  highlights.forEach(([start, end, qindex], index) => {
     if (lastEnd !== start) {
       chunks.push({
         isHighlighted: false,
@@ -34,6 +34,7 @@ export default function highlightChunks(text, queriesOrQuery, caseSensitive = fa
       isHighlighted: true,
       text: text.slice(start, end),
       highlightIndex: index,
+      queryindex: qindex
     });
 
     lastEnd = end;

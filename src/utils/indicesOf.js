@@ -1,6 +1,6 @@
 import cloneRegexp from 'clone-regexp';
 
-export default function indicesOf(text, searchStringOrRegex, caseSensitive = false) {
+export default function indicesOf(text, searchStringOrRegex, caseSensitive = false, qindex) {
   if (searchStringOrRegex instanceof RegExp) {
     const re = cloneRegexp(searchStringOrRegex, { global: true });
     const indices = [];
@@ -32,7 +32,7 @@ export default function indicesOf(text, searchStringOrRegex, caseSensitive = fal
   let index = strCpy.indexOf(searchStringCpy, startIndex);
   while (index > -1) {
     startIndex = index + searchStringLen;
-    indices.push([index, startIndex]);
+    indices.push([index, startIndex, qindex]);
 
     index = strCpy.indexOf(searchStringCpy, index + 1);
   }
