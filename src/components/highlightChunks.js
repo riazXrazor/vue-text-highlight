@@ -18,7 +18,12 @@ export default function highlightChunks(text, queriesOrQuery, caseSensitive = fa
     matches.push(...indicesOf(text, query, caseSensitive, qindex));
   });
 
-  const highlights = mergeRange(matches);
+
+  // console.log('m',matches)
+
+  const highlights = matches;
+
+  // console.log('h',highlights)
 
   const chunks = [];
   let lastEnd = 0;
@@ -34,7 +39,7 @@ export default function highlightChunks(text, queriesOrQuery, caseSensitive = fa
       isHighlighted: true,
       text: text.slice(start, end),
       highlightIndex: index,
-      queryindex: qindex
+      queryindex: qindex,
     });
 
     lastEnd = end;

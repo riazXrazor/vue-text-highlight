@@ -37,15 +37,17 @@ export default {
           text,
           isHighlighted,
           highlightIndex,
+          queryindex
         }) => (
           !isHighlighted
             ? text
             : <this.highlightComponent
-              class={['text__highlight', this.highlightClass]}
-              style={this.highlightStyle}
+              class={['text__highlight', (this.highlightClass && this.highlightClass[queryindex] ? this.highlightClass[queryindex] : this.highlightClass)]}
+              style={ this.highlightStyle && this.highlightStyle[queryindex] ? this.highlightStyle[queryindex] : this.highlightStyle}
               key={highlightIndex}
               index={highlightIndex}
               text={text}
+              queryIndex={queryindex}
               {...this.attributes}
             >
               {text}

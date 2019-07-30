@@ -3,29 +3,10 @@
     <fork-tag></fork-tag>
     <h1>
       <text-highlight
-        queries="highlight"
-        highlightClass="titleHighlight">vue text highlight</text-highlight>
+        :queries="['vue','highlight']"
+        :highlightClass="['titleHighlight1','titleHighlight2']">vue text highlight</text-highlight>
     </h1>
-    <div class="card">
-      <div class="inputs">
-        <input-field
-          @input="updateSearch"
-          label="Search"
-          class="textField"></input-field>
-        <check-box
-          :defaultValue="split"
-          @onchange="updateSplit"
-          class="checkBox">Split by space</check-box>
-        <check-box
-          :defaultValue="custom"
-          @onchange="updateCustom"
-          class="checkBox">Custom component</check-box>
-      </div>
-      <example-document
-        :search="search"
-        :split="split"
-        :custom="custom"></example-document>
-    </div>
+
   </div>
 </template>
 
@@ -80,6 +61,10 @@ body {
   margin-top: calc(10vh + 5%);
   .titleHighlight {
     background-color: #42b983;
+    color: #FFFFFFF0;
+  }
+  .titleHighlight1 {
+    background-color: #b94719;
     color: #FFFFFFF0;
   }
   .card {
